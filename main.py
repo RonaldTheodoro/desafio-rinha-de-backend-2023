@@ -17,24 +17,24 @@ class PersonBase(BaseModel):
         return " ".join(self.stack) if self.stack else None
 
 
-class PerssonCreate(PersonBase):
+class PersonCreate(PersonBase):
     id: UUID = Field(default_factory=uuid4)
 
 
 app = FastAPI()
 
 
-@app.post("/pessoas")
+@app.post("/pessoas", response_model=PersonCreate)
 async def create_person(person: PersonBase):
     return {"message": "Hello World"}
 
 
-@app.get("/pessoas/{id}")
+@app.get("/pessoas/{id}", response_model=PersonCreate)
 async def get_person(id):
     return {"message": "Hello World"}
 
 
-@app.get("/pessoas")
+@app.get("/pessoas", response_model=PersonCreate)
 async def get_persons_by_term(t: str | None = None):
     return {"message": "Hello World"}
 
