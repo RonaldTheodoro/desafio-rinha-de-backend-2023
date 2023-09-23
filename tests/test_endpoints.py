@@ -1,19 +1,12 @@
 import re
 from uuid import UUID
 
-import pytest
 from fastapi.testclient import TestClient
 
-from main import app
 
 RE_PERSON_URL = re.compile(
     r"^/pessoas/[\d\w]{8}-[\d\w]{4}-[\d\w]{4}-[\d\w]{4}-[\d\w]{12}"
 )
-
-
-@pytest.fixture
-def client() -> TestClient:
-    return TestClient(app)
 
 
 def test_create_person(client: TestClient):
