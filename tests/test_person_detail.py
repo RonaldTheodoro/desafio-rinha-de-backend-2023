@@ -1,7 +1,4 @@
-from uuid import UUID
-
-
-def test_get_person_detail(client):
+def test_get_person_detail(client, is_valid_uuid):
     person = {
         "apelido": "josé",
         "nome": "José Roberto",
@@ -26,11 +23,3 @@ def test_get_person_detail(client):
 def test_get_person_detail_not_found(client):
     response = client.get("/pessoas/65945492-427b-4d31-9793-c3bcdb43d6f1")
     assert response.status_code == 404
-
-
-def is_valid_uuid(uuid_to_test):
-    try:
-        uuid_obj = UUID(uuid_to_test, version=4)
-    except ValueError:
-        return False
-    return str(uuid_obj) == uuid_to_test
