@@ -10,6 +10,9 @@ fastapi = {extras = ["all"], version = "*"}
 httpx = "*"
 pytest = "*"
 
+[scripts]
+tests = "pytest"
+
 [requires]
 python_version = "3.11"
 python_full_version = "3.11.5"
